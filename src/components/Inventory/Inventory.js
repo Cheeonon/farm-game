@@ -2,11 +2,11 @@ import ActionSection from "../ActionSection/ActionSection";
 import Items from "../Items/Items";
 import "./Inventory.scss";
 
-const Inventory = ({currentVeggies}) => {
+const Inventory = ({selectedItem}) => {
     return (
         <>
             <div className="inventory">
-                <ActionSection currentVeggies={currentVeggies}/>
+                <ActionSection selectedItem={selectedItem}/>
                 <Items />
             </div>
         </>

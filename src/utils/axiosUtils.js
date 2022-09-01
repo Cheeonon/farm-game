@@ -11,3 +11,9 @@ export const getUserData = (callback) => {
         .then(callback)
         .catch(errorCallback);
 }
+
+export const getMarketData = (callback) => {
+    axios.get(BACKEND_URL + "/market")
+        .then(callback)
+        .catch(errorCallback);
+}

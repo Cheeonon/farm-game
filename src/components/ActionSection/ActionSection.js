@@ -1,13 +1,42 @@
 import './ActionSection.scss';
-import {} from '../../utils/axiosUtils';
+import {getMarketData} from '../../utils/axiosUtils';
+import { useEffect, useState } from 'react';
+import coinImage from "../../assets/images/coin.png";
 
-
-const ActionSection = () => {
+const ActionSection = ({selectedItem}) => {
 //    axiosUtils.getMarketItems()
 //     .then(resolve => {
 //         const itemsArr = resolve.data;
 //         const itemsList = itemsArr.map(item => item.name);
 //     })
+    const [marketDataForSelectedItem, setMarketDataForSelectedItem] = useState(null);
+    const isAbleToSell = Number(selectedItem.untilHarvest) <= 0;
+
+    useEffect(()=>{
+        getMarketData((response) => {
+            const marketDataArray = response.data;
+            const singleMarketData = marketDataArray.find((item) => {
+                return item.name === selectedItem.name
+            })
+            setMarketDataForSelectedItem(singleMarketData);
+        })
+    }, [selectedItem]);
+
+    const calculatePrice = (selectedItem) => {
+        let price = marketDataForSelectedItem.sellingPrice;
+
+        if (selectedItem.untilHarvest > 0) {
+            price = 0;
+        } else if (selectedItem.untilHarvest < 0) {
+            price /= 2;
+        }
+
+        if (selectedItem.isFertilized) {
+            price *= 2;
+        }
+
+        return price;
+    }
 
     const handleWater = () => {
         // water = true 만드는 axios post
@@ -20,6 +49,7 @@ const ActionSection = () => {
     const handleSell = () => {
         // balance 올라가고
         // 해당하는 item axios delete
+        console.log("clicked")
     }
 
     const handleSleep = () => {
@@ -38,15 +68,18 @@ const ActionSection = () => {
                   <div className="action__crop">
                         <div className="action__image"></div>
                         <ul className="action__description">
-                              <li>Name: Tomato</li>
-                              <li>Current Selling Price: </li>
-                              <li>Days to maturity: </li>
+                              <li>Name: {selectedItem.name}</li>
+                              <li className='action__list-item'>Selling Price: 
+                                {marketDataForSelectedItem ? " " + calculatePrice(selectedItem) : ""}
+                                <img src={coinImage} alt="coin" className='action__coin'/>
+                              </li>
+                              <li>Days to maturity: {selectedItem.untilHarvest}</li>
                         </ul>
                   </div>
                   <div className="action__action-list">
                         <button className="action__btn" onClick={handleWater}>Water</button>
                         <button className="action__btn" onClick={handleFertilize}>Fertilize</button>
-                        <button className="action__btn" onClick={handleSell}>Sell</button>
+                        <button className={`action__btn ${isAbleToSell || "action__btn--disabled"}`} onClick={handleSell} disabled={!isAbleToSell}>Sell</button>
                   </div>
             </div>
             <form action="" className="action__form">

@@ -22,8 +22,6 @@ function App() {
     });
   }, []);
 
-  console.log(selectedItem);
-
   if (!userData) {
     return "Loading...";
   }
@@ -31,7 +29,7 @@ function App() {
     <>
       <Header name={userData.name} balance={userData.balance} houseLevel={userData.currentHouseLevel}/>
       <main className="main">
-          <Inventory currentVeggies={userData.currentVegetables}/>
+          <Inventory selectedItem={selectedItem}/>
           <Farm currentVeggies={userData.currentVegetables} handleSelect={handleSelect}/>
       </main>
     </>
