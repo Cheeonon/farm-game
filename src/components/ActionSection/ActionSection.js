@@ -1,6 +1,37 @@
-import './ActionSection.scss'
+import './ActionSection.scss';
+// import axiosUtils from '../../utils/axiosUtils';
+
 
 const ActionSection = () => {
+//    axiosUtils.getMarketItems()
+//     .then(resolve => {
+//         const itemsArr = resolve.data;
+//         const itemsList = itemsArr.map(item => item.name);
+//     })
+
+    const handleWater = () => {
+        // water = true 만드는 axios post
+    }
+
+    const handleFertilize = () => {
+        // Fertilize = true 만드는 axios post
+    }
+
+    const handleSell = () => {
+        // balance 올라가고
+        // 해당하는 item axios delete
+    }
+
+    const handleSleep = () => {
+        // axios get?
+        // update each items?
+    }
+
+    const handleBuy = () => {
+        // 누르면 array update
+        // axios post
+    }
+
     return (
         <>
             <div className="action">
@@ -13,19 +44,20 @@ const ActionSection = () => {
                         </ul>
                   </div>
                   <div className="action__action-list">
-                        <button className="action__btn">Water</button>
-                        <button className="action__btn">Fertilize</button>
-                        <button className="action__btn">Sell</button>
+                        <button className="action__btn" onClick={handleWater}>Water</button>
+                        <button className="action__btn" onClick={handleFertilize}>Fertilize</button>
+                        <button className="action__btn" onClick={handleSell}>Sell</button>
                   </div>
             </div>
             <form action="" className="action__form">
-                <button className="action__btn">Sleep</button>
+                <button className="action__btn" onClick={handleSleep}>Sleep</button>
                 <select className="action__btn" name="" id="">
+                    {/* {itemsList.map(item => <option value={item}>{item}</option> )} */}
                     <option value="carrot">Carrot</option>
-                    <option value="carrot">Tomato</option>
-                    <option value="carrot">Cucumber</option>
-                </select>
-                <button className="action__btn">Buy</button>
+                    <option value="Tomato">Tomato</option>
+                    <option value="Cucumber">Cucumber</option>
+                </select> 
+                <button className="action__btn" onClick={handleBuy}>Buy</button>
             </form>
         </>
     );

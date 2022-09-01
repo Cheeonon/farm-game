@@ -1,21 +1,20 @@
+import { useState } from 'react';
+import Profile from '../Profile/Profile';
 import './Header.scss';
 
 const Header = () => {
+      const [showProfile, setShowProfile] = useState(false);
+
+      const handleProfile = (e) => {
+            setShowProfile(!showProfile);
+      }
+
   return (
     <>
     <header className='header'> 
             <h1 className='header__logo'>BrainFarm</h1>
-            {/* <div className="profile">
-                  <div className="profile__user">
-                        <span className="header__name">Brad</span>
-                        <img src="#" alt="profile.img"/>
-                  </div>
-                  <span className="header__balance">100G</span>
-                  <div className="header__house">
-                        <button>Upgrade</button>
-                        <p>You can upgrade now!</p>
-                  </div>
-            </div> */}
+            <div className="profile__btn" onClick={handleProfile}>Profile</div>
+            {showProfile && <Profile />}
       </header>
     </>
   )

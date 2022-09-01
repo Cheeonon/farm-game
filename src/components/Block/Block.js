@@ -5,9 +5,8 @@ const Block = () => {
   return (
       <div className="block">
             <div className='block__crop'></div>
-            
       </div>
   )
 }
 
-export default Block
+export default Block 
