@@ -65,5 +65,19 @@
             color: white;
             padding: 0.4rem 1rem;
             box-shadow: inset 0px 2px 7px 10px rgba(0, 0, 0, 0.1);
+
+            &--disabled {
+                  background-color: #aaaaaa;
+            }
+      }
+
+      &__coin {
+            width: 1.5rem;
+            height: 1.8rem;
+      }
+
+      &__list-item {
+            display: flex;
+            align-items: center;
       }
 }
