@@ -3,7 +3,7 @@ import './Header.scss';
 const Header = () => {
   return (
     <>
-    <header className='header'>
+    <header className='header'> 
             <h1 className='header__logo'>BrainFarm</h1>
             {/* <div className="profile">
                   <div className="profile__user">
