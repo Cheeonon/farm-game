@@ -1,0 +1,13 @@
+@use '../../styles/partial/mixins' as *;
+
+.farm{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: bisque;
+
+      @include tablet{
+            width: 60%;
+            height: 100vh;
+      }
+}

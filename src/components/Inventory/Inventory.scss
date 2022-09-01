@@ -1,0 +1,15 @@
+@use '../../styles/partial/mixins' as *;
+
+.inventory{
+      background-color: #947878;
+      padding: 2rem;
+
+      &__title{
+            text-align: center;
+      }
+
+      @include tablet{
+            width: 40%;
+      }
+}
+ 

@@ -1,0 +1,20 @@
+.profile{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 1rem;
+
+      &__section{
+            margin: 0 1rem;
+      }
+
+      &__upgrade-btn{
+            background-color: #DC851F;
+            border: none;
+            margin: 0.2rem;
+            border-radius: 5px;
+            color: white;
+            padding: 0.4rem 1rem;
+            box-shadow: inset 0px 2px 7px 10px rgba(0, 0, 0, 0.1);
+      }
+}

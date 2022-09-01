@@ -1,0 +1,38 @@
+@use './partial/fonts' as *;
+@use './partial/variables';
+@use './partial/mixins' as *;
+
+.main{
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+
+      @include tablet{
+            flex-direction: row;
+      }
+}
+
+/* reset */
+
+body{
+      margin: 0;
+      min-width: 440px;
+}
+
+*, *::before, *::after{
+      font-family:  Pixeled;
+      box-sizing: border-box;
+}
+
+h1{
+      margin: 0;
+}
+
+li{
+      list-style: none;
+}
+
+ul{
+      margin: 0;
+      padding: 0;
+}

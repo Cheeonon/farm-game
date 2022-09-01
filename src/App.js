@@ -1,9 +1,17 @@
-import './App.scss';
+import './styles/App.scss';
+import Header from './components/Header/Header';
+import Farm from './components/Farm/Farm';
+import Inventory from './components/Inventory/Inventory';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <Header />
+      <main className="main">
+          <Inventory />
+          <Farm />
+      </main>
+    </>
   );
 }
 
