@@ -6,7 +6,6 @@ const Inventory = () => {
     return (
         <>
             <div className="inventory">
-                <h1 className="inventory__title">Inventory</h1>
                 <ActionSection />
                 <Items />
             </div>

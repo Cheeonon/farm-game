@@ -13,19 +13,19 @@ const ActionSection = () => {
                         </ul>
                   </div>
                   <div className="action__action-list">
-                        <button>Water</button>
-                        <button>Fertilize</button>
-                        <button>Sell</button>
+                        <button className="action__btn">Water</button>
+                        <button className="action__btn">Fertilize</button>
+                        <button className="action__btn">Sell</button>
                   </div>
             </div>
-            <form action="">
-                <button>Sleep</button>
-                <select name="" id="">
+            <form action="" className="action__form">
+                <button className="action__btn">Sleep</button>
+                <select className="action__btn" name="" id="">
                     <option value="carrot">Carrot</option>
                     <option value="carrot">Tomato</option>
                     <option value="carrot">Cucumber</option>
                 </select>
-                <button>Buy</button>
+                <button className="action__btn">Buy</button>
             </form>
         </>
     );

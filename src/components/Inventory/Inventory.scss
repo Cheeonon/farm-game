@@ -1,15 +1,15 @@
+@use '../../styles/partial/mixins' as *;
 
 .inventory{
-      // background: url("../../assets/images/inventory.gif") center no-repeat;
-      // background-size: cover;
-      // background: rgb(158, 149, 142);
-      background-color: #7E5920;
-      width: 40%;
-      height: 100vh;
+      background-color: #947878;
       padding: 2rem;
 
       &__title{
             text-align: center;
+      }
+
+      @include tablet{
+            width: 40%;
       }
 }
  

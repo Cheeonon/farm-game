@@ -1,7 +1,7 @@
 import './Items.scss';
 
 const Items = () => {
-      const itemsInInventory = 18;
+      const itemsInInventory = 12;
       const itemsArr = [];
       for (let i = 1; i <= itemsInInventory; i++){
             itemsArr.push(i);
@@ -17,6 +17,6 @@ const Items = () => {
       </div>
    </>
   )
-}
+} 
 
 export default Items

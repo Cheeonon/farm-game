@@ -1,8 +1,15 @@
+@use '../../styles/partial/mixins' as *;
+
 .board{
-      border: 1rem solid #7E5920;
+      border: 1rem solid #694A38;
       border-radius: 10px;
       display: flex;
       flex-wrap: wrap;
-      height: 50%;
-      width: 50%;
+      width: 22rem;
+      height: 22rem;
+      margin: 1rem;
+      
+      @include tablet{
+            border-radius: 10px;
+      }
 }

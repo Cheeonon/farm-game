@@ -1,10 +1,13 @@
+@use '../../styles/partial/mixins' as *;
+
 .farm{
       display: flex;
       justify-content: center;
       align-items: center;
-      // background: url("../../assets/images/farm-background.png") no-repeat center;
-      // background-size: cover;
-      background-color: #619479;
-      // background-color: bisque;
-      width: 60%;
+      background-color: bisque;
+
+      @include tablet{
+            width: 60%;
+            height: 100vh;
+      }
 }
