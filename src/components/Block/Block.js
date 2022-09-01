@@ -1,7 +1,7 @@
 import './Block.scss'
 import cropImg from '../../assets/images/Crop_Spritesheet.png';
 
-const Block = ({onClick, id, untilHarvest, isWatered, name}) => {
+const Block = ({handleSelect, id, untilHarvest, isWatered, name}) => {
   let positionX = 0;
   let positionY = 0;
 
@@ -44,12 +44,11 @@ const Block = ({onClick, id, untilHarvest, isWatered, name}) => {
       break;
   }
 
-  console.log("x: " + positionX)
-  console.log("y: " + positionY)
   return (
       <div className="block">
             <div 
               className={id ? "block__crop" : ""}
+              onClick={()=> {handleSelect(id)}}
               style={{
                 background: `url(${cropImg}) ${positionX}px ${positionY}px`
               }}

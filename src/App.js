@@ -7,14 +7,22 @@ import {getUserData} from "./utils/axiosUtils";
 
 function App() {
   const [userData, setUserData] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // 누른 block id확인해서 inventory한테 넘겨주기 - state (currentItem)
+  const handleSelect = (id) => {
+    const item = userData.currentVegetables.find((item) => item.id === id);
+    setSelectedItem(item);
+  }
 
   useEffect(()=>{
     getUserData((response)=>{
-      console.log(response.data);
-      console.log(typeof response.data);
       setUserData(response.data);
+      setSelectedItem(response.data.currentVegetables[0])
     });
   }, []);
+
+  console.log(selectedItem);
 
   if (!userData) {
     return "Loading...";
@@ -23,8 +31,8 @@ function App() {
     <>
       <Header name={userData.name} balance={userData.balance} houseLevel={userData.currentHouseLevel}/>
       <main className="main">
-          <Inventory />
-          <Farm currentVeggies={userData.currentVegetables}/>
+          <Inventory currentVeggies={userData.currentVegetables}/>
+          <Farm currentVeggies={userData.currentVegetables} handleSelect={handleSelect}/>
       </main>
     </>
   );
