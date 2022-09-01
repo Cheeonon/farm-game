@@ -1,0 +1,25 @@
+.header{
+      display: flex;
+      flex-direction: column;
+      background-color: black;
+      color: white;
+}
+
+.header__logo{
+      color: white;
+      text-align: center;
+}
+
+.header__profile{
+      display: flex;
+      justify-content: center;
+}
+
+.profile{
+      display: flex;
+}
+
+.profile__user{
+      display: flex;
+      flex-direction: column;
+}
