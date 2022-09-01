@@ -16,6 +16,7 @@ const Board = ({currentVeggies, handleSelect}) => {
                   id={currentVeggies[i].id} 
                   name={currentVeggies[i].name}
                   untilHarvest={currentVeggies[i].untilHarvest}
+                  isFertilized={currentVeggies[i].isFertilized}
                   isWatered={currentVeggies[i].isWatered}/>)
             } else {
                   blockArr.push(<Block handleSelect={handleSelect}/>);

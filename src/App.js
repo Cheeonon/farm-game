@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import Farm from './components/Farm/Farm';
 import Inventory from './components/Inventory/Inventory';
 import {useState, useEffect} from "react";
-import {getUserData} from "./utils/axiosUtils";
+import {getUserData, waterPlant, fertilizePlant} from "./utils/axiosUtils";
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -14,6 +14,41 @@ function App() {
     const item = userData.currentVegetables.find((item) => item.id === id);
     setSelectedItem(item);
   }
+
+  const handleWater = () => {
+    // water = true 만드는 axios post
+    waterPlant(()=>{
+      getUserData((response) => {
+        setUserData(response.data);
+      })
+    }, selectedItem.id)
+  }
+
+  const handleFertilize = () => {
+      // Fertilize = true 만드는 axios post
+      fertilizePlant(()=> {
+        getUserData((response) => {
+          setUserData(response.data);
+        })
+      }, selectedItem.id);
+  }
+
+  const handleSell = () => {
+      // balance 올라가고
+      // 해당하는 item axios delete
+      console.log("clicked")
+  }
+
+  const handleSleep = () => {
+      // axios get?
+      // update each items?
+  }
+
+  const handleBuy = () => {
+      // 누르면 array update
+      // axios post
+  }
+
 
   useEffect(()=>{
     getUserData((response)=>{
@@ -29,7 +64,13 @@ function App() {
     <>
       <Header name={userData.name} balance={userData.balance} houseLevel={userData.currentHouseLevel}/>
       <main className="main">
-          <Inventory selectedItem={selectedItem}/>
+          <Inventory 
+            selectedItem={selectedItem} 
+            handleWater={handleWater} 
+            handleSell={handleSell}
+            handleBuy={handleBuy}
+            handleSleep={handleSleep}
+            handleFertilize={handleFertilize}/>
           <Farm currentVeggies={userData.currentVegetables} handleSelect={handleSelect}/>
       </main>
     </>

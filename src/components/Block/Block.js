@@ -1,7 +1,9 @@
 import './Block.scss'
 import cropImg from '../../assets/images/Crop_Spritesheet.png';
+import dirtImg from "../../assets/images/dirt.png";
+import dirtWateredImg from "../../assets/images/dirt-watered.png";
 
-const Block = ({handleSelect, id, untilHarvest, isWatered, name}) => {
+const Block = ({handleSelect, id, untilHarvest, isWatered, name, isFertilized}) => {
   let positionX = 0;
   let positionY = 0;
 
@@ -45,7 +47,10 @@ const Block = ({handleSelect, id, untilHarvest, isWatered, name}) => {
   }
 
   return (
-      <div className="block">
+      <div className="block" style={{
+        background: `url(${isWatered ? dirtWateredImg : dirtImg}) center no-repeat`,
+        border: isFertilized? "3px dashed springgreen" : ""
+      }}>
             <div 
               className={id ? "block__crop" : ""}
               onClick={()=> {handleSelect(id)}}

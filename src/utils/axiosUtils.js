@@ -17,3 +17,15 @@ export const getMarketData = (callback) => {
         .then(callback)
         .catch(errorCallback);
 }
+
+export const waterPlant = (callback, id) => {
+    axios.put(BACKEND_URL + "/water/" + id)
+        .then(callback)
+        .catch(errorCallback);
+}
+
+export const fertilizePlant = (callback, id) => {
+    axios.put(BACKEND_URL + "/fertilize/" + id)
+        .then(callback)
+        .catch(errorCallback);
+}
