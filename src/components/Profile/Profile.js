@@ -1,6 +1,6 @@
 import './Profile.scss';
 
-const Profile = () => {
+const Profile = ({name, balance, houseLevel}) => {
       const handleUpgradeHouse = () => {
 
       }
@@ -12,11 +12,11 @@ const Profile = () => {
       <div className="profile">
             <div className="profile__section">
                   <img src="#" alt="profile.img"/>
-                  <span className="header__name">Brad</span>
+                  <span className="header__name">{name}</span>
             </div>
             <div className="profile__section">
                   <img src="" alt="gold-icon" className='header__gold-icon'/>
-                  <span className="header__gold">100G</span>
+                  <span className="header__gold">{balance + "G"}</span>
             </div>
             <div className="profile__section">
                   <button className="profile__upgrade-btn" onClick={handleUpgradeHouse}>Upgrade House</button>

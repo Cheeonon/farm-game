@@ -1,13 +1,13 @@
 import Board from '../Board/Board';
 import './Farm.scss';
 
-const Farm = () => {
+const Farm = ({currentVeggies}) => {
 
 
   return (
     <>
      <div className="farm">
-        <Board />
+        <Board currentVeggies={currentVeggies}/>
       </div>
     </>
   )

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Profile from '../Profile/Profile';
 import './Header.scss';
 
-const Header = () => {
+const Header = ({name, balance, houseLevel}) => {
       const [showProfile, setShowProfile] = useState(false);
 
       const handleProfile = (e) => {
@@ -14,7 +14,7 @@ const Header = () => {
     <header className='header'> 
             <h1 className='header__logo'>BrainFarm</h1>
             <div className="profile__btn" onClick={handleProfile}>Profile</div>
-            {showProfile && <Profile />}
+            {showProfile && <Profile name={name} balance={balance} houseLevel={houseLevel}/>}
       </header>
     </>
   )

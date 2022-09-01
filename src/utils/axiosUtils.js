@@ -1,4 +1,13 @@
+import axios from "axios";
 
-// export const getMarketItems = () => {
-//       return axios.get("url" + "/market");
-// }
+const BACKEND_URL = "http://localhost:8080";
+
+const errorCallback = (error) => {
+    console.log(error);
+}
+
+export const getUserData = (callback) => {
+      axios.get(BACKEND_URL + "/user")
+        .then(callback)
+        .catch(errorCallback);
+}
