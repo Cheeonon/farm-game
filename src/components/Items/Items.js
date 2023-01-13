@@ -61,6 +61,9 @@ const Items = ({handleBuy}) => {
                         positionX = 0;
                         positionY = -335;
                         break;
+                        default:
+                        positionX = 0;
+                        positionY = 0;
                   }
                   return (
                         <div className="item"> 
