@@ -12,7 +12,7 @@ const Header = ({name, balance, houseLevel}) => {
   return (
     <>
     <header className='header'> 
-            <h1 className='header__logo'>BrainFarm</h1>
+            <h1 className='header__logo'>Cheeon's Farm</h1>
             <div className="profile__btn" onClick={handleProfile}>Profile</div>
             {showProfile && <Profile name={name} balance={balance} houseLevel={houseLevel}/>}
       </header>

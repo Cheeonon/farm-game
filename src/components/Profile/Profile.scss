@@ -6,6 +6,8 @@
 
       &__section{
             margin: 0 1rem;
+            display: flex;
+            align-items: center;
       }
 
       &__upgrade-btn{
@@ -16,5 +18,10 @@
             color: white;
             padding: 0.4rem 1rem;
             box-shadow: inset 0px 2px 7px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      &__icon{
+            width: 2rem;
+            margin-right: 0.5rem;
       }
 }

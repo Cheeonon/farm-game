@@ -16,4 +16,9 @@
       position: absolute;
       top: 0.7rem;
       right: 0.7rem;
+
+      &:hover{
+            transform: scale(1.05);
+            color: rgb(0, 0, 0);
+      }
 }

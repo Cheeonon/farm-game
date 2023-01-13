@@ -1,24 +1,85 @@
 import './Items.scss';
+import {getMarketData} from '../../utils/axiosUtils';
+import { useEffect, useState } from 'react';
+import cropImg from "../../assets/images/Crop_Spritesheet.png";
 
-const Items = () => {
-      const itemsInInventory = 12;
-      const itemsArr = [];
+const Items = ({handleBuy}) => {
+      const [marketDataArr, setMarketDataArr] = useState(null);
 
-      // axios로 받아온 data로 만들기
-      for (let i = 1; i <= itemsInInventory; i++){
-             // prop으로 image 넘겨주기
-            // 유저가 가지고 있는 아이템이 더이상 없을때는, 빈 img 넘겨주기
-            itemsArr.push(i);
+      useEffect(()=>{
+          getMarketData((response) => {
+              setMarketDataArr(response.data);
+          })
+      }, []);
+
+
+      if(!marketDataArr){
+            return null
       }
   return (
    <>
       <div className="items">            
-            {itemsArr.map(item => (
-                  <div className="item">
-                        <div className="item__image"></div>
-                  </div>
-            ))}
+            {marketDataArr.map(item => {
+
+                  let positionX = 0;
+                  let positionY = 0;
+
+                  switch (item.name) {
+                        case "tomato":
+                        positionX = 0;
+                        positionY = -95;
+                        break;
+                        case "watermelon":
+                        positionX = 290;
+                        positionY = -95;
+                        break;
+                        case "grape":
+                        positionX = 290;
+                        positionY = -240;
+                        break;
+                        case "pineapple":
+                        positionX = 0;
+                        positionY = -190;
+                        break;
+                        case "strawberry":
+                        positionX = 0;
+                        positionY = -288;
+                        break;
+                        case "orange":
+                        positionX = 0;
+                        positionY = -383;
+                        break;
+                        case "corn":
+                        positionX = 0;
+                        positionY = -430;
+                        break;
+                        case "eggplant":
+                        positionX = 0;
+                        positionY = -140;
+                        break;
+                        case "potato":
+                        positionX = 0;
+                        positionY = -335;
+                        break;
+                  }
+                  return (
+                        <div className="item"> 
+                              <div 
+                                    className="item__image" 
+                                    style={{
+                                    background: `url(${cropImg}) ${positionX}px ${positionY}px`
+                              }}>
+                              </div>
+                        </div>
+                  )
+            })}
       </div>
+      <form action="" className="action__form" onSubmit={handleBuy}>
+            <select className="action__btn" name="seed" id="">
+                  {marketDataArr.map(item => <option value={item.name}>{item.name}: {item.seedPrice}G</option> )}
+            </select> 
+            <button className="action__btn">Buy</button>
+      </form>
    </>
   )
 } 

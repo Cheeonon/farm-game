@@ -2,7 +2,7 @@ import ActionSection from "../ActionSection/ActionSection";
 import Items from "../Items/Items";
 import "./Inventory.scss";
 
-const Inventory = ({selectedItem, handleWater, handleFertilize, handleSell, handleBuy, handleSleep}) => {
+const Inventory = ({currentVeggies, selectedItem, handleWater, handleFertilize, handleSell, handleBuy, handleSleep}) => {
     return (
         <>
             <div className="inventory">
@@ -12,11 +12,12 @@ const Inventory = ({selectedItem, handleWater, handleFertilize, handleSell, hand
                     handleSell={handleSell}
                     handleBuy={handleBuy}
                     handleSleep={handleSleep}
-                    handleFertilize={handleFertilize}/>
-                <Items />
+                    handleFertilize={handleFertilize}
+                    currentVeggie={currentVeggies}/>
+                <Items currentVeggies={currentVeggies} handleBuy={handleBuy}/>
             </div>
         </>
-    );
+    ); 
 };
 
 export default Inventory;

@@ -29,3 +29,21 @@ export const fertilizePlant = (callback, id) => {
         .then(callback)
         .catch(errorCallback);
 }
+
+export const sleep = (callback) => {
+    axios.put(BACKEND_URL + "/sleep")
+        .then(callback)
+        .catch(errorCallback);
+}
+
+export const buySeed = (callback, name) => {
+    axios.post(BACKEND_URL + "/buy/" + name)
+        .then(callback)
+        .catch(errorCallback);
+}
+
+export const sellPlant = (callback, id) => {
+    axios.put(BACKEND_URL + "/sell/" + id)
+        .then(callback)
+        .catch(errorCallback);
+}

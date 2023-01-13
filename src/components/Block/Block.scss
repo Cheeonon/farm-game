@@ -1,5 +1,5 @@
 .block{
-      background-size: cover;
+      // background-size: cover;
       border: #694A38 0.5rem solid;
       width: calc(100% / 3);
       height: calc(100% / 3);
@@ -10,5 +10,13 @@
             transform-origin: top left;
             transform: scale(1.5);
             margin: 0.5rem;
+
+            &:hover{
+                  transform: scale(1.6);
+            }
+      }
+
+      &:hover{
+            transform: scale(1.05);
       }
 }  

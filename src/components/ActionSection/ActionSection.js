@@ -1,5 +1,5 @@
 import './ActionSection.scss';
-import {getMarketData, waterPlant} from '../../utils/axiosUtils';
+import {getMarketData} from '../../utils/axiosUtils';
 import { useEffect, useState } from 'react';
 import coinImage from "../../assets/images/coin.png";
 import cropImg from '../../assets/images/Crop_Spritesheet.png';
@@ -11,12 +11,14 @@ const ActionSection = ({selectedItem, handleWater, handleFertilize, handleSell, 
 //         const itemsList = itemsArr.map(item => item.name);
 //     })
     const [marketDataForSelectedItem, setMarketDataForSelectedItem] = useState(null);
-    const isAbleToSell = Number(selectedItem.untilHarvest) <= 0;
+    const isAbleToSell = selectedItem ? Number(selectedItem.untilHarvest) <= 0 : false;
+    const [marketDataArr, setMarketDataArr] = useState(null);
 
     useEffect(()=>{
         getMarketData((response) => {
-            const marketDataArray = response.data;
-            const singleMarketData = marketDataArray.find((item) => {
+            setMarketDataArr(response.data);
+
+            const singleMarketData = response.data.find((item) => {
                 return item.name === selectedItem.name
             })
             setMarketDataForSelectedItem(singleMarketData);
@@ -24,6 +26,9 @@ const ActionSection = ({selectedItem, handleWater, handleFertilize, handleSell, 
     }, [selectedItem]);
 
     const calculatePrice = (selectedItem) => {
+      if(!selectedItem){
+        return 0;
+      }
         let price = marketDataForSelectedItem.sellingPrice;
 
         if (selectedItem.untilHarvest > 0) {
@@ -39,50 +44,53 @@ const ActionSection = ({selectedItem, handleWater, handleFertilize, handleSell, 
         return price;
     }
 
- 
+    if(!marketDataArr){
+      return;
+    }
 
     let positionX = 0;
     let positionY = 0;
 
-    switch (selectedItem.name) {
-        case "tomato":
-          positionX = 0;
-          positionY = -95;
-          break;
-        case "watermelon":
-          positionX = 290;
-          positionY = -95;
-          break;
-        case "grape":
-          positionX = 290;
-          positionY = -240;
-          break;
-        case "pineapple":
-          positionX = 0;
-          positionY = -190;
-          break;
-        case "strawberry":
-          positionX = 0;
-          positionY = -288;
-          break;
-        case "orange":
-          positionX = 0;
-          positionY = -383;
-          break;
-        case "corn":
-          positionX = 0;
-          positionY = -430;
-          break;
-        case "eggplant":
-          positionX = 0;
-          positionY = -140;
-          break;
-        case "potato":
-          positionX = 0;
-          positionY = -335;
-          break;
-      }
-
+    if(selectedItem){
+      switch (selectedItem.name) {
+          case "tomato":
+            positionX = 0;
+            positionY = -95;
+            break;
+          case "watermelon":
+            positionX = 290;
+            positionY = -95;
+            break;
+          case "grape":
+            positionX = 290;
+            positionY = -240;
+            break;
+          case "pineapple":
+            positionX = 0;
+            positionY = -190;
+            break;
+          case "strawberry":
+            positionX = 0;
+            positionY = -288;
+            break;
+          case "orange":
+            positionX = 0;
+            positionY = -383;
+            break;
+          case "corn":
+            positionX = 0;
+            positionY = -430;
+            break;
+          case "eggplant":
+            positionX = 0;
+            positionY = -140;
+            break;
+          case "potato":
+            positionX = 0;
+            positionY = -335;
+            break;
+        }
+    }
     return (
         <>
             <div className="action">
@@ -93,12 +101,12 @@ const ActionSection = ({selectedItem, handleWater, handleFertilize, handleSell, 
                              }}
                         ></div>
                         <ul className="action__description">
-                              <li>Name: {selectedItem.name}</li>
+                              <li>Name: {selectedItem ? selectedItem.name : ""}</li>
                               <li className='action__list-item'>Selling Price: 
                                 {marketDataForSelectedItem ? " " + calculatePrice(selectedItem) : ""}
                                 <img src={coinImage} alt="coin" className='action__coin'/>
                               </li>
-                              <li>Days to maturity: {selectedItem.untilHarvest}</li>
+                              <li>Days to maturity: {selectedItem ? selectedItem.untilHarvest : "" }</li>
                         </ul>
                   </div>
                   <div className="action__action-list">
@@ -107,16 +115,7 @@ const ActionSection = ({selectedItem, handleWater, handleFertilize, handleSell, 
                         <button className={`action__btn ${isAbleToSell || "action__btn--disabled"}`} onClick={handleSell} disabled={!isAbleToSell}>Sell</button>
                   </div>
             </div>
-            <form action="" className="action__form">
-                <button className="action__btn" onClick={handleSleep}>Sleep</button>
-                <select className="action__btn" name="" id="">
-                    {/* {itemsList.map(item => <option value={item}>{item}</option> )} */}
-                    <option value="carrot">Carrot</option>
-                    <option value="Tomato">Tomato</option>
-                    <option value="Cucumber">Cucumber</option>
-                </select> 
-                <button className="action__btn" onClick={handleBuy}>Buy</button>
-            </form>
+            <button className="action__btn action__btn--sleep" onClick={handleSleep}>Sleep</button>
         </>
     );
 };
